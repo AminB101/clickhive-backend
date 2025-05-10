@@ -10,8 +10,8 @@ router.post("/create-checkout-session", async (req, res) => {
     const session = await stripe.checkout.sessions.create({
       mode: "subscription",
       line_items: [{ price: priceId, quantity: 1 }],
-      success_url: `${process.env.FRONTEND_URL}/success`,
-      cancel_url: `${process.env.FRONTEND_URL}/`,
+      success_url: `https://clickhive-frontend.onrender.com?success=true`,
+      cancel_url: `https://clickhive-frontend.onrender.com?canceled=true`,
     });
 
     res.json({ url: session.url });
